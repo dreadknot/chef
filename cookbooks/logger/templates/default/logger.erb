@@ -4,8 +4,8 @@ template(name="forwardFormat" type="string"
 
 # @@ is TCP @ is UDP
 <% @inputs_count.times do |i| %>
-local7.* @@192.168.33.49:<%= 1000+i %>
-local6.* @192.168.33.49:<%= 1000+i %>
+local7.* @@<%= @log_dest %>:<%= 1000+i %>
+local6.* @<%= @log_dest %>:<%= 1000+i %>
 <%= %>
 <% i + 1 %>
 <% end %>
