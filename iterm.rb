@@ -16,10 +16,12 @@
         # end
 
         session.servers_for.each do |server|
-          Appscript.app("System Events").application_processes["iTerm 2.app"].keystroke("t", :using=>:command_down)
           cmd = "unset PROMPT_COMMAND; echo -e \"\\033]0;#{server.host}\\007\"; ssh #{server.user ? "#{server.user}@#{server.host}" : server.host}"
           window.sessions.last.write(:text => cmd)
+          Appscript.app("System Events").application_processes["iTerm 2.app"].keystroke("t", :using=>:command_down)
           sleep 1
         end
+
+        Appscript.app("System Events").application_processes["iTerm 2.app"].keystroke("w", :using=>:command_down)
 
       end
